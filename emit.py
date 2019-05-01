@@ -15,7 +15,7 @@ from subprocess import Popen
 
 # Open a process with a specific file descriptor for I/O.
 
-def procio(command, fd):
+def popen(command, fd):
     # Both stdin, stdout and stderr are set to the same
     # descriptor. 
 
@@ -32,10 +32,10 @@ def procio(command, fd):
 # Attach a process to a socket by equating respective I/O
 # file descriptors. This creates a weird pipe-ish thing.
 
-def attach(command, socket):
+def link(command, socket):
     fd = socket.fileno()
 
-    proc = procio(command, fd)
+    proc = popen(command, fd)
 
     return proc
 
@@ -54,8 +54,8 @@ def listen(port, command):
         # Accept a peer connection also as socket object.
         # Then attempt to attach it to the target process.
 
-        client, addr = sock.accept()
-        attach(command, client)
+        client, info = sock.accept()
+        link(command, client)
 
         # Their socket should fall back on the process' I/O
         # streams.
