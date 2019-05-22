@@ -23,9 +23,9 @@ def popen(command, fd):
 
     # Actually open the process with a system call.
 
-    process = Popen(*flags)
+    proc = Popen(*flags)
 
-    return process
+    return proc
 
 
 
@@ -45,10 +45,10 @@ def link(command, socket):
 # peer connects, attach their socket to a certain process.
 
 def listen(port, command):
-    sock = socket()
+    server = socket()
 
-    sock.bind(('', port))
-    sock.listen(5)
+    server.bind(('', port))
+    server.listen(5)
 
     while True:
         # Accept a peer connection also as socket object.
@@ -61,6 +61,8 @@ def listen(port, command):
         # streams.
 
         client.close()
+       
+    server.close()
 
 
 
