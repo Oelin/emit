@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 
-'''emit(1), interact with a process by piping I/O through a
-TCP connection.
+'''emit(1), interact with a process over TCP.
 
 emit [port] [command]'''
 
