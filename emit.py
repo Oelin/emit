@@ -12,7 +12,6 @@ from sys import argv
 from subprocess import Popen
 
 
-
 # Open a process with a specific file descriptor for I/O.
 
 def popen(command, fd):
@@ -26,7 +25,6 @@ def popen(command, fd):
     proc = Popen(*flags)
 
     return proc
-
 
 
 # Attach a process to a socket by equating respective I/O
