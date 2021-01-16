@@ -51,7 +51,7 @@ def listen(port, command):
         # Accept a peer connection also as socket object.
         # Then attempt to attach it to the target process.
 
-        client, info = sock.accept()
+        client, info = server.accept()
         link(command, client)
 
         # Their socket should fall back on the process' I/O
